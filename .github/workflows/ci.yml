@@ -1,0 +1,26 @@
+name: Probando mi Codigo Automaticamente
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  ejecutar-pruebas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copiar codigo al servidor
+        uses: actions/checkout@v4
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar librerias
+        run: npm install
+
+      - name: Correr comando npm test
+        run: npm test
